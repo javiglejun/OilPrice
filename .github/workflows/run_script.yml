@@ -25,16 +25,30 @@ jobs:
         run: |
           pip install pandas requests openpyxl
 
-      - name: Ejecutar script
+      - name: Ejecutar script 1
         env:
           OILPRICE_API_KEY: ${{ secrets.OILPRICE_API_KEY }}
         run: |
           python NBP_Historico.py
 
-      - name: Subir Excel al repo
+      - name: Subir Excel al repo 1
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add Historico_NBP_Price.xlsx
+          git commit -m "Actualización automática" || echo "No changes"
+          git push
+          
+      - name: Ejecutar script 2
+        env:
+          OILPRICE_API_KEY: ${{ secrets.OILPRICE_API_KEY }}
+        run: |
+          python JKM_Historico.py
+
+      - name: Subir Excel al repo 2
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Historico_JKM_Price.xlsx
           git commit -m "Actualización automática" || echo "No changes"
           git push
