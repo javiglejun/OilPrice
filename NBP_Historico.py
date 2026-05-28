@@ -198,5 +198,3 @@ if datos_recolectados:
 
 else:
     print("No se pudieron obtener datos.")
-
-Add script
