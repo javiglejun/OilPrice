@@ -35,6 +35,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add Historico_OilPrice.xlsx
+          git add Historico_NBP_Price.xlsx
           git commit -m "Actualización automática" || echo "No changes"
           git push
