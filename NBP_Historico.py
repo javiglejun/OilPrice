@@ -81,7 +81,7 @@ if datos_recolectados:
 
     # Convertimos columnas a tipo correcto
     df_nuevo["Precio"] = pd.to_numeric(df_nuevo["Precio"], errors="coerce")
-    df_nuevo["Ultima_Actualizacion"] = pd.to_datetime(df_nuevo["Ultima_Actualizacion"], errors="coerce", utc=True)
+    df_nuevo["Ultima_Actualizacion"] = pd.to_datetime(df_nuevo["Ultima_Actualizacion"], errors="coerce", utc=True).dt.tz_localize(None)
     df_nuevo["Fecha_Precio"] = pd.to_datetime(df_nuevo["Fecha_Precio"], errors="coerce")
     df_nuevo["Fecha_Ejecucion"] = pd.to_datetime(df_nuevo["Fecha_Ejecucion"], errors="coerce")
 
@@ -113,7 +113,7 @@ if datos_recolectados:
 
         # Convertir tipos
         df_existente["Precio"] = pd.to_numeric(df_existente["Precio"], errors="coerce")
-        df_existente["Ultima_Actualizacion"] = pd.to_datetime(df_existente["Ultima_Actualizacion"], errors="coerce", utc=True)
+        df_existente["Ultima_Actualizacion"] = pd.to_datetime(df_existente["Ultima_Actualizacion"], errors="coerce", utc=True).dt.tz_localize(None)
         df_existente["Fecha_Precio"] = pd.to_datetime(df_existente["Fecha_Precio"], errors="coerce")
         df_existente["Fecha_Ejecucion"] = pd.to_datetime(df_existente["Fecha_Ejecucion"], errors="coerce")
 
