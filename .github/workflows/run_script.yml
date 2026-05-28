@@ -1,0 +1,38 @@
+name: Run Oil Price Script
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v3
+
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Instalar librerías
+        run: |
+          pip install pandas requests openpyxl
+
+      - name: Ejecutar script
+        env:
+          OILPRICE_API_KEY: ${{ secrets.OILPRICE_API_KEY }}
+        run: |
+          python gas_diario.py
+
+      - name: Subir Excel al repo
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Historico_OilPrice.xlsx
+          git commit -m "Actualización automática" || echo "No changes"
+          git push
+Add workflow
