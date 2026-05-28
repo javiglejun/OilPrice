@@ -29,7 +29,7 @@ jobs:
         env:
           OILPRICE_API_KEY: ${{ secrets.OILPRICE_API_KEY }}
         run: |
-          python gas_diario.py
+          python NBP_Historico.py
 
       - name: Subir Excel al repo
         run: |
