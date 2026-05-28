@@ -16,7 +16,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # 2) CONFIGURACIÓN BÁSICA
 # -------------------------------------------------------------------
 commodity = "NATURAL_GAS_GBP"
-nombre_archivo = "Historico_OilPrice.xlsx"
+nombre_archivo = "Historico_NBPPrice.xlsx"
 
 # Leer la API key desde una variable de entorno llamada OILPRICE_API_KEY
 api_key_value = os.getenv("OILPRICE_API_KEY")
