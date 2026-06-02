@@ -52,3 +52,17 @@ jobs:
           git add Historico_JKM_Price.xlsx
           git commit -m "Actualización automática" || echo "No changes"
           git push
+
+      - name: Ejecutar script 3
+        env:
+          OILPRICE_API_KEY: ${{ secrets.OILPRICE_API_KEY }}
+        run: |
+          python EUAs_Historico.py
+
+      - name: Subir Excel al repo 2
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add Historico_EUAs_Price.xlsx
+          git commit -m "Actualización automática" || echo "No changes"
+          git push
